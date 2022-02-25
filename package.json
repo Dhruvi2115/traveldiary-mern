@@ -1,0 +1,28 @@
+{
+  "name": "traveldiary",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "nodemon": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhruvi2115/travel-diary.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dhruvi2115/travel-diary/issues"
+  },
+  "homepage": "https://github.com/Dhruvi2115/travel-diary#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1",
+    "mongos": "^0.0.0"
+  }
+}
