@@ -4,7 +4,9 @@ const mongoose = require("mongoose")
 const sessionController = require("./controller/session-controller")
 const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
-
+const travelplanController = require("./controller/travelplan-controller")
+const usertaskController = require("./controller/usertask-controller")
+const travelController = require("./controller/travel-controller")
 
 const app = express()
 //middle ware 
@@ -49,6 +51,23 @@ app.get("/users",userController.getAllUsers)
 app.delete("/users/:userId",userController.deleteUser)
 
 app.post("/login",userController.login)
+
+
+//travelplan
+app.post("/travelplan",travelplanController.addtravelplan)
+app.get("/travelplan",travelplanController.getAlltravelplan)
+app.delete("/travelplan",travelplanController.deletetravelplan)
+
+//travel
+app.post("/travel",travelController.addtravel)
+app.get("/travel",travelController.getAlltravel)
+app.delete("/travel",travelController.deletetravel)
+
+//usertask
+app.post("/usertask",usertaskController.addusertask)
+app.get("/usertask",usertaskController.getAllusertask)
+app.delete("/usertask",usertaskController.deleteusertask)
+
 
 //server
 app.listen(3000,function(){

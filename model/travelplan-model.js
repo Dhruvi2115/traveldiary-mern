@@ -18,7 +18,7 @@ const travelplanSchema = new mongoose.Schema({
             type:String
         },
         Places:{
-               type:String
+               type:mongoose.Schema.Types.String,
                 
         }
 })

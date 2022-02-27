@@ -1,14 +1,13 @@
 // const bcrypt = require("bcrypt")
-const travelplanModel = require("../model/usertask-model")
+const travelModel = require("../model/travel-modell")
 
 
 //add [ POST ]
-module.exports.addusertask = function (req, res) {
+module.exports.addtravel = function (req, res) {
 
-    let traveltype= req.body.traveltype
-    let feedback = req.body.feedback
-    let makediary= req.body.makediary
-    let addtravelplan = req.body.addtravelplan
+    let LocalTravel = req.body.LocalTravel
+    let National = req.body.National
+    let Interenational = req.body.Interenational
     
     //encrypt 
 
@@ -17,17 +16,16 @@ module.exports.addusertask = function (req, res) {
     // let role = req.body.role
 
 
-    let usertask = new usertaskModel({
-        traveltype: traveltype,
-        feedback: feedback,
-        makediary: makediary,
-        addtravelplan: addtravelplan
+    let travel = new travelModel({
+        LocalTravel: LocalTravel,
+        National: National,
+        Interenational: Interenational,
         
     })
 
 
 
-    usertask.save(function (err, data) {
+    travel.save(function (err, data) {
         if (err) {
             res.json({ msg: "SMW", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
@@ -38,9 +36,9 @@ module.exports.addusertask = function (req, res) {
 
 }
 //list
-module.exports.getAllusertask = function (req, res) {
+module.exports.getAlltravel = function (req, res) {
 
-    usertaskModel.find().populate("role").exec(function (err, data) {
+    travelModel.find().populate("role").exec(function (err, data) {
         if (err) {
             res.json({ msg: "SMW", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
@@ -51,11 +49,11 @@ module.exports.getAllusertask = function (req, res) {
 
 
 //delete
-module.exports.deleteusertask = function(req,res){
+module.exports.deletetravel = function(req,res){
     //params userid 
     let userId = req.params.userId //postman -> userid 
 
-    usertaskModel.deleteOne({_id:userId},function (err, data) {
+    travelModel.deleteOne({_id:userId},function (err, data) {
         if (err) {
             res.json({ msg: "SMW", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
@@ -66,15 +64,15 @@ module.exports.deleteusertask = function(req,res){
 
 
 //update 
-module.exports.updateusertask = function(req,res){
+module.exports.updatetravel = function(req,res){
 
-    let traveltype = req.body.traveltype
-    let feedback = req.body.feedback
-    let makediary =  req.body.makediary
-    let addtravelplan = req.body.addtravelplan
+    let LocalTravel = req.body.LocalTravel
+    let National = req.body.National
+    let Interenational =  req.body.Interenational
+    
     
 
-    usertaskModel.updateOne({_traveltype:traveltype},{feedback:feedback},{makediary:makediary},{addtravelplan:addtravelplan},function(err,data) {
+    travelModel.updateOne({_LocalTravel:LocalTravel},{National:National},{Interenational:Interenational},function(err,data) {
         if (err) {
             res.json({ msg: "SMW", data:err, status: -1 })
         } else {
